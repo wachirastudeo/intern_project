@@ -1,7 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class User(AbstractUser):
+    tel = models.CharField(max_length=15, blank=True)
+
+    class Meta:
+        db_table = 'auth_user'
+
 class Intern(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -25,7 +30,6 @@ class Intern(models.Model):
 
     class Meta:
         db_table = 'interns'
-
 
 class Education(models.Model):
     user = models.ForeignKey(Intern, on_delete=models.CASCADE)
@@ -66,13 +70,3 @@ class WorkExperience(models.Model):
 
     class Meta:
         db_table = 'work_experiences'
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    tel = models.CharField(max_length=15, blank=True)
-
-def create_user_profile(sender, instance, created, **kwargs): 
-    if created:
-        Profile.objects.create(user=instance)
-
-models.signals.post_save.connect(create_user_profile, sender=User)

@@ -24,24 +24,27 @@ class WorkExperienceSerializer(serializers.ModelSerializer):
         model = WorkExperience
         fields = '__all__'
 class RegisterSerializer(serializers.ModelSerializer):
-    tel = serializers.CharField(max_length=15, required=False)
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
         fields = ('username', 'password', 'first_name', 'last_name', 'email', 'tel')
-        extra_kwargs = {'password': {'write_only': True}}
-
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'email': {'required': True},
+            'tel': {'required': False}
+        }
     def create(self, validated_data):
-        user= User.objects.create_user(
+        user = User.objects.create_user(
             username=validated_data['username'],
-            password=validated_data['password'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
             email=validated_data['email'],
+            password=validated_data['password'],
+            first_name=validated_data.get('first_name', ''),
+            last_name=validated_data.get('last_name', ''),
+            tel=validated_data.get('tel', '')
         )
-        user.profile.tel = validated_data['tel']
-        user.profile.save()
         return user
+
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()  # รับค่า refresh token

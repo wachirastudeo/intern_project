@@ -15,7 +15,7 @@ from drf_yasg import openapi
 class InternViewSet(viewsets.ModelViewSet):
     queryset = Intern.objects.all()
     serializer_class = InternSerializer
-    permission_classes = (permissions.AllowAny,) # endpoint นี้จะไม่ต้องมีการ authenticate
+    # permission_classes = (permissions.AllowAny,) # endpoint นี้จะไม่ต้องมีการ authenticate
 
 class EducationViewSet(viewsets.ModelViewSet):
     queryset = Education.objects.all()

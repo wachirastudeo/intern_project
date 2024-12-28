@@ -38,11 +38,35 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'drf_yasg',
     'api',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # ระยะเวลาของ Access Token คือ 1 ชั่วโมง
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1), # ระยะเวลาของ Refresh Token คือ 1 วัน
+    'ROTATE_REFRESH_TOKENS': True, # หมุนเวลา Refresh Token
+    'BLACKLIST_AFTER_ROTATION': True,  # เปิดใช้งานการตรวจสอบ blacklist
+    'ALGORITHM': 'HS256', # อัลกอริธึมสำหรับการเข้ารหัส
+    'SIGNING_KEY': SECRET_KEY, # คีย์สำหรับการเข้ารหัส    
+    'AUTH_HEADER_TYPES': ('Bearer',), # ประเภทของส่วนหัวสำหรับการอนุญาต
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',), # คลาสของสิทธิ์การเข้าสู่ระบบ
+    'UPDATE_LAST_LOGIN': True,  # อัพเดทเวลาการเข้าสู่ระบบครั้งสุดท้าย
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', #เพิ่มแก้ปัญหา cors site
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'intern.urls'
@@ -106,13 +131,41 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#ตั้งค่า อนุญาต CORS
+#ให้เข้าถึงได้ทุกโดเมน
+CORS_ORIGIN_ALLOW_ALL = True
+# อนุญาตเฉพาะโดเมนที่ระบุให้เข้าถึง
+# CORS_ALLOWED_ORIGINS = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+# ]
+
+# ถ้าต้องการกำหนด HTTP Methods ที่อนุญาต เช่น GET, POST, PUT, PATCH, DELETE
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+
+# ถ้าต้องการกำหนด Headers ที่อนุญาต เช่น Authorization, Content-Type
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 

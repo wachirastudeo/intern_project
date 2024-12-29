@@ -55,7 +55,7 @@ export default function Login() {
     <>
       <Head>
         <title>ลงทะเบียน -Intern Recruitment</title>
-        <meta
+        <meta 
           name="description"
           content="ลงทะเบียนสำหรับนักศึกษา ผู้หางาน และบริษัทประกาศงาน"
         />

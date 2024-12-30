@@ -34,11 +34,15 @@ export const authService = {
   saveUser(user: User): void {
     localStorage.setItem('user', JSON.stringify(user));
   },
-
   getUser(): User | null {
     const userStr = localStorage.getItem('user');
-    return userStr ? JSON.parse(userStr) : null;
-  },
+    try {
+        return userStr ? JSON.parse(userStr) : null;
+    } catch (error) {
+        console.error('Failed to parse user from localStorage:', error);
+        return null;
+    }
+},
 
   clearAuth(): void {
     localStorage.removeItem('accessToken');

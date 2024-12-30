@@ -9,10 +9,10 @@ const Resume = () => {
           {/* Left Content */}
           <div>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              ฝากเรซูเม่ไว้กับเรา <span className="text-sky-500">ได้งาน ที่ฝึกงาน ชัวร์ 100%</span>
+              ฝากเรซูเม่ไว้กับเรา <p className="text-sky-500 pt-2">ได้งาน ที่ฝึกงาน ชัวร์ 100%</p>
             </h2>
             <h3 className="text-xl text-gray-900 mb-6">
-              สร้างเรซูเม่ออนไลน์ กับ Dekend ดียังไง ?
+              สร้างเรซูเม่ออนไลน์ กับ Happy Intern ดียังไง ?
             </h3>
             <ul className="space-y-4">
               {[

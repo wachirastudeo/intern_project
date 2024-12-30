@@ -15,7 +15,7 @@ const Navbar = () => {
 
               </Link>
               {/* nav link  */}
-              <div className='hidden md:flex item-center space-x-8'>
+              <div className='hidden md:flex items-center ml-auto mr-5  space-x-8'>
                 <Link href="/find-internship" className=" text-gray-600 hover:text-sky-600">ค้นหาเด็กฝึกงาน</Link>
                 <Link href="/articles" className=" text-gray-600 hover:text-sky-600">บทความ</Link>
                 <Link href="/contact" className=" text-gray-600 hover:text-sky-600">ติดต่อเรา</Link>

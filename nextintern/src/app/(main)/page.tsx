@@ -1,7 +1,7 @@
-import CompanyLogos from "@/components/CompanyLogos"
-import Hero from "@/components/Hero"
-import NewsUpdate from "@/components/NewsUpdate"
-import Resume from "@/components/Resume"
+import CompanyLogos from "@/components/frontend/CompanyLogos"
+import Hero from "@/components/frontend/Hero"
+import NewsUpdate from "@/components/frontend/NewsUpdate"
+import Resume from "@/components/frontend/Resume"
 
 const Home = () => {
   return (

@@ -72,8 +72,8 @@ export default function Login() {
           />
           <div className="absolute top-20 left-1/2 transform -translate-x-1/2">
             <Image
-              src="/images/dekend-logo.png"
-              alt="Dekend Logo"
+              src="/images/intern-logo.png"
+              alt="intern Logo"
               width={150}
               height={40}
               priority

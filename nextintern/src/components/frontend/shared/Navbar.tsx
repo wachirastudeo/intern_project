@@ -4,14 +4,14 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-white z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/dekend-logo.png" 
-                alt="Deken Logo"
+                src="/images/intern-logo.png" 
+                alt="intern Logo"
                 width={120}   
 
-                height={32} />
+                height={26} />
 
               </Link>
               {/* nav link  */}

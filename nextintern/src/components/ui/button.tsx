@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   }: ButtonProps) {
     const baseStyles = "w-full py-3 rounded-lg transition-colors disabled:opacity-50"
     const variants = {
-      primary: "bg-green-500 text-white hover:bg-green-600",
+      primary: "bg-sky-500 text-white hover:bg-sky-600",
       outline: "border border-gray-300 text-gray-900 hover:bg-gray-50"
     }
   

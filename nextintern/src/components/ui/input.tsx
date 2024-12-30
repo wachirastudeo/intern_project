@@ -25,7 +25,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
         )}
         <div className="relative">
           <input
-            className={`mt-1 block w-full px-4 py-3 bg-white border text-gray-900 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${className}`}
+            className={`mt-1 block w-full px-4 py-3 bg-white border text-gray-900 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent ${className}`}
             {...props}
             type={isPasswordInput && showPassword ? "text" : props.type}
           />
